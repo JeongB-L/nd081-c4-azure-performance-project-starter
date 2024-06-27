@@ -55,7 +55,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
  app,
- exporter=AzureExporter(connection_string="InstrumentationKey=InstrumentationKey=e0ae7ba8-880c-4a3e-9696-0e2b99d38171;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b5d19e1a-ad8a-431e-a036-829d7cb30b00"),
+ exporter=AzureExporter(connection_string="e0ae7ba8-880c-4a3e-9696-0e2b99d38171"),
  sampler=ProbabilitySampler(rate=1.0)
 )
 
