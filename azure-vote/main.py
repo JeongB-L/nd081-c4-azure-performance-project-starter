@@ -32,23 +32,22 @@ config_integration.trace_integrations(['requests'])
 
 # Logging
 logger = logging.getLogger(__name__) 
-handler = AzureLogHandler(connection_string='InstrumentationKey=InstrumentationKey=e0ae7ba8-880c-4a3e-9696-0e2b99d38171;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b5d19e1a-ad8a-431e-a036-829d7cb30b00')
+handler = AzureLogHandler(connection_string='e0ae7ba8-880c-4a3e-9696-0e2b99d38171')
 handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
 logger.addHandler(handler)
 # Logging custom Events 
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=InstrumentationKey=e0ae7ba8-880c-4a3e-9696-0e2b99d38171;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b5d19e1a-ad8a-431e-a036-829d7cb30b00'))
+logger.addHandler(AzureEventHandler(connection_string='e0ae7ba8-880c-4a3e-9696-0e2b99d38171'))
 # Set the logging level
 logging.basicConfig(level=logging.INFO)
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
 enable_standard_metrics=True,
-connection_string='InstrumentationKey=InstrumentationKey=e0ae7ba8-880c-4a3e-9696-0e2b99d38171;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b5d19e1a-ad8a-431e-a036-829d7cb30b00')
-view_manager.register_exporter(exporter)
+connection_string='e0ae7ba8-880c-4a3e-9696-0e2b99d38171')
 
 # Tracing
 tracer = Tracer(
  exporter=AzureExporter(
-     connection_string='InstrumentationKey=InstrumentationKey=e0ae7ba8-880c-4a3e-9696-0e2b99d38171;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b5d19e1a-ad8a-431e-a036-829d7cb30b00'),
+     connection_string='e0ae7ba8-880c-4a3e-9696-0e2b99d38171'),
  sampler=ProbabilitySampler(1.0),
 )
 app = Flask(__name__)
